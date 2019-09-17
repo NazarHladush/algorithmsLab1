@@ -14,7 +14,10 @@ public class Main {
         Screen[] item2 = manager.insertionSort(item);
         long stopTime = System.nanoTime();
         long time = stopTime-startTime;
+        System.out.println("Insertion Sort");
         System.out.println("Insertion Sort Time: " + time);
+        System.out.println("Insertion Sort comparison:" + Manager.insertionComparison);
+        System.out.println("Insertion Sort swap:" + Manager.insertionSwap);
         for (Screen a : item2
         ) {
             System.out.println(a.toString());
@@ -28,9 +31,8 @@ public class Main {
         long time1 = stopTime1-startTime1;
         System.out.println("Merge Sort");
         System.out.println("Merge Sort Time: " + time1);
-        System.out.println("Merge Sort comparison: " + Manager.getComparison1());
-
-        System.out.println("Merge Sort swap: " + Manager.getSwap1());
+        System.out.println("Merge Sort comparison: " + Manager.mergeComparison);
+        System.out.println("Merge Sort swap: " + Manager.mergeSwap);
         for (Screen a : item
         ) {
             System.out.println(a.toString());

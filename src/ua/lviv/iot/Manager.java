@@ -1,40 +1,29 @@
 package ua.lviv.iot;
 
-  class Manager {
+class Manager {
 
-    public static int comparison1;
-    public static int swap1;
+    static int mergeComparison;
+    static int mergeSwap;
+    static int insertionComparison;
+    static int insertionSwap;
 
-    public static int getComparison1() {
-        return comparison1;
-    }
-
-    public static int getSwap1() {
-        return swap1;
-    }
-
-    public Screen[] insertionSort(Screen[] screens) {
-        int swap = 0;
-        int comparison = 0;
+    Screen[] insertionSort(Screen[] screens) {
         for (int i = 1; i < screens.length; i++) {
             Screen element = screens[i];
             int previousElement = i - 1;
-            comparison = comparison + 1;
+            insertionComparison++;
             while (previousElement > 0 && screens[previousElement].getHeight() < element.getHeight()) {
                 screens[previousElement + 1] = screens[previousElement];
-                swap = swap + 1;
+                insertionSwap++;
                 previousElement = previousElement - 1;
             }
             screens[previousElement + 1] = element;
-            swap = swap + 1;
+            insertionSwap++;
         }
-        System.out.println("Insertion Sort");
-        System.out.println("Insertion Sort comparison:" + comparison);
-        System.out.println("Insertion Sort swap:" + swap);
         return screens;
     }
 
-    public void mergeSort(Screen[] screens, int n) {
+    void mergeSort(Screen[] screens, int n) {
         if (n < 2) {
             return;
         }
@@ -54,28 +43,28 @@ package ua.lviv.iot;
         merge(screens, l, r, mid, n - mid);
     }
 
-    public void merge(
+    private void merge(
             Screen[] a, Screen[] l, Screen[] r, int left, int right) {
         int i = 0, j = 0, k = 0;
 
         while (i < left && j < right) {
-            comparison1++;
+            mergeComparison++;
             if (l[i].getWidth() >= r[j].getWidth()) {
                 a[k++] = l[i++];
-                swap1++;
+                mergeSwap++;
             } else {
                 a[k++] = r[j++];
-                swap1++;
+                mergeSwap++;
             }
         }
         while (i < left) {
             a[k++] = l[i++];
-            swap1++;
+            mergeSwap++;
 
         }
         while (j < right) {
             a[k++] = r[j++];
-            swap1++;
+            mergeSwap++;
         }
     }
 }
